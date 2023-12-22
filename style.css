@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://wallpapers.com/images/hd/naruto-4k-shuriken-bterxiceuky7q0ob.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #3498db;
+    padding: 20px;
+    text-align: center;
+    margin: 0;
+    font-size: 24px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 150px; /* Ajuste a margem entre os links conforme necessário */
+}
+
+h2 {
+    text-align: center;
+    color: #e0e7bc;
+    font-size: 40px;
+    border: 2px solid #e0e7bc; /* Adiciona uma borda sólida com a cor #e0e7bc */
+    padding: 10px; /* Adiciona um preenchimento interno à borda */
+    border-radius: 5px; /* Adiciona bordas arredondadas à borda */
+}
+
+form {
+    max-width: 300px;
+    width: 100%;
+    margin: 100px auto 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Adicione um estilo para a classe white-text */
+        .white-text {
+            color: white;
+            font-size: 18px; /* Altere o tamanho da fonte conforme necessário */
+        }
+
+        /* Adicione um estilo para a div de resultado */
+        #result {
+            background-color: #333; /* Cor de fundo escuro (pode ajustar conforme necessário) */
+            padding: 10px; /* Adicione algum espaçamento interno para melhor aparência */
+        }
+    </style>
+    <title>Contact Us</title>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Search CEP</a>
+    </nav>
+
+    <h2>BUSCA DE CEP</h2>
+
+    <div>
+        <form id="cepForm">
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" placeholder="Enter CEP" required>
+            <button type="button" onclick="searchCep()">Search</button>
+        </form>
+
+        <!-- Adicione a classe white-text à div de resultado -->
+        <div id="result" class="white-text"></div>
+    </div>
+
+    <script>
+        function searchCep() {
+            var cepInput = document.getElementById('cep');
+            var cep = cepInput.value;
+
+            // Fazendo uma requisição à API ViaCEP
+            fetch(`https://viacep.com.br/ws/${cep}/json/`, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var resultDiv = document.getElementById('result');
+                    if (resultDiv) {
+                        // Adicione a classe white-text à div de resultado
+                        resultDiv.innerHTML = `
+                            <p class="white-text">CEP: ${data.cep}</p>
+                            <p class="white-text">Logradouro: ${data.logradouro}</p>
+                            <p class="white-text">Bairro: ${data.bairro}</p>
+                            <p class="white-text">Cidade: ${data.localidade}</p>
+                            <p class="white-text">Estado: ${data.uf}</p>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar CEP:', error);
+                    var resultDiv = document.getElementById('result');
+                    if (resultDiv) {
+                        resultDiv.innerHTML = 'Erro ao buscar CEP. Verifique se o CEP é válido.';
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
